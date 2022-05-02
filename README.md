@@ -6,14 +6,14 @@ The purpose of this analysis is to use neural networks and deep learning to crea
 
 ## Results
 *Data Preprocessing*
-* What variable(s) are considered the target(s) for your model?
+* What variable(s) are considered the target(s) for your model?</br>
 The target for this model is the `IS_SUCCESSFUL` column.
 
-* What variable(s) are considered to be the features of your mode?
+* What variable(s) are considered to be the features of your mode?</br>
 The features are `APPLICATION_TYPE`, `AFFILIATION`, `CLASSIFICATION`, `USE_CASE`, `ORGANIZATION`, `STATUS`, `INCOME_AMT`, `SPECIAL_CONSIDERATIONS`, AND `ASK_AMT`. 
 
 
-* What variable(s) are neither targets nor features, and should be removed from the input data?
+* What variable(s) are neither targets nor features, and should be removed from the input data?</br>
 Identification features that offer no advantageous information for the model were removed. These include the `EIN` and `NAME` columns. 
 
 *Compiling, Training, and Evaluating the Model*
@@ -27,18 +27,19 @@ The target accuracy for this model was 75%. I was unable to alter the model in a
 I made three attempt to increase the model's performance. 
 In the first attempt, I added more neurons to the hidden layers. Since the basic rule of thumb says to use two to three times of neurons on the hidden layer as the input features. Our original model used 80 nodes, which is about double. To optimize the model, I reran it with 120 (three times the number of input features) neurons. The original model received an accuracy score of 72.58%. The first attempt to optimize the model resulted in a slightly lower accuracy of 72.54%. 
 
-<img src="images/optimized_1">
-<img src="images/optimized_1_acc">
+<img src="images/optimized_1.png">
+<img src="images/optimized_1_acc.png">
 
 </br>
 The second attempt to optimize the model involved increasing the number of hidden layers. I added an extra hidden layer. The first hidden layer had 100 nodes, the second 50 nodes, and the third 30 nodes. This attempt resulted in a slightly higher accuracy score of 72.64%. 
 
-<img src="images/optimized_2">
-<img src="images/optimized_2_acc">
+<img src="images/optimized_2.png">
+<img src="images/optimized_2_acc.png">
 
 </br>
 The final attempt to optimize the model focused on preprocessing the data. I looked at `INCOME_AMT` and noticed that the majority of applicants had a recorded income of 0. It's unclear whether these applicants actually have 0 income, are non-profits that record earnings differently, did not report/include income information. I removed both the `SPECIAL_CONSIDERATIONS` and `STATUS` columns after looking at the `value_counts()` and noticed that there was an uneven distribution of values. Thinking this may have an influence on the model's performance, I removed the columns to see how the model would work. I used the same model construction as the optimization 2 attempt (three hidden layers) since it performed the best. This model performed the worst with an accuracy of 72.04%. 
-
+<img src="images/optimized_3.png">
+<img src="images/optimized_3_acc.png">
 
 </br>
 
